@@ -16,16 +16,37 @@ If you have [docker-compose]() installed (aka. fig) you can download our [docker
 Manual Quick Start
 ========
 ```
-docker run -d --name elasticsearch -h elasticsearch -v /etc/localtime:/etc/localtime:ro -v /etc/timezone:/etc/timezone:ro -p 9200:9200 zinvoice/elasticsearch
+docker run -d --name elasticsearch -h elasticsearch \
+	-v /etc/localtime:/etc/localtime:ro \
+	-v /etc/timezone:/etc/timezone:ro \
+	-p 9200:9200 \
+	zinvoice/elasticsearch
 ```
 
 If you would like to start the rest of ELK Stack here are the other compatible container.
 ```
-docker run -d --name logstash -h logstash -v /etc/localtime:/etc/localtime:ro -v /etc/timezone:/etc/timezone:ro -p 9200:9200 zinvoice/logstash
-docker run -d --name kibana -h kibana -v /etc/localtime:/etc/localtime:ro -v /etc/timezone:/etc/timezone:ro -p 8000:80 sirile/kibanabox
-docker run -d --name logspout -h logspout -v /etc/localtime:/etc/localtime:ro -v /etc/timezone:/etc/timezone:ro -v /var/run/docker.sock:/tmp/docker.sock -p 8100:8000 progrium/logspout syslog://<<IP-OR-HOSTNAME-OF-LOGSTASH>:5000
+docker run -d --name logstash -h logstash \
+	-v /etc/localtime:/etc/localtime:ro \
+	-v /etc/timezone:/etc/timezone:ro \
+	-p 9200:9200 \
+	zinvoice/logstash
+
+docker run -d --name kibana -h kibana \
+	-v /etc/localtime:/etc/localtime:ro \
+	-v /etc/timezone:/etc/timezone:ro \
+	-p 8000:80 \ 
+	sirile/kibanabox
+
+docker run -d --name logspout -h logspout \
+	-v /etc/localtime:/etc/localtime:ro \
+	-v /etc/timezone:/etc/timezone:ro \
+	-v /var/run/docker.sock:/tmp/docker.sock \
+	-p 8100:8000 \ 
+	progrium/logspout \
+	syslog://<<IP-OR-HOSTNAME-OF-LOGSTASH>:5000
 ``` 
-When you run dnsdock you can simple put in the dns entry of logstash which is `logstash` 
+
+When running with dnsdock you can simple put in the dns entry of logstash which is `logstash` 
 
 How is it working
 ========
