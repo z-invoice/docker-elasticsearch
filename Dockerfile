@@ -3,7 +3,7 @@ FROM jeanblanchard/busybox-java
 
 MAINTAINER Vadim Bauer <hello@z-rechnung.de>
 
-ENV el=elasticsearch-1.4.2
+ENV el=elasticsearch-1.4.4
 
 RUN curl -kLsS http://download.elasticsearch.org/elasticsearch/elasticsearch/${el}.tar.gz | gunzip -c | tar -xf - -C /opt &&\
     ln -s /opt/${el} /opt/elasticsearch
