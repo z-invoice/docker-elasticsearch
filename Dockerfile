@@ -3,9 +3,9 @@ FROM jeanblanchard/busybox-java
 
 MAINTAINER Vadim Bauer <hello@z-rechnung.de>
 
-ENV el=elasticsearch-1.4.4
+ENV el=elasticsearch-1.5.2
 
-RUN curl -kLsS http://download.elasticsearch.org/elasticsearch/elasticsearch/${el}.tar.gz | gunzip -c | tar -xf - -C /opt &&\
+RUN curl -kLsS http://download.elastic.co/elasticsearch/elasticsearch/${el}.tar.gz | gunzip -c | tar -xf - -C /opt &&\
     ln -s /opt/${el} /opt/elasticsearch
     
 COPY config/* /opt/elasticsearch/config/
